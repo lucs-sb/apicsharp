@@ -10,6 +10,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["apicsharp.csproj", "apicsharp/"]
+RUN dotnet restore "./apicsharp/apicsharp.csproj"
+COPY . .
 WORKDIR "/src/apicsharp"
 RUN dotnet build "./apicsharp.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
