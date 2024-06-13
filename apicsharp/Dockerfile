@@ -10,8 +10,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["apicsharp.csproj", "apicsharp/"]
-COPY ["./Certificate/myCertificate.crt", "/usr/local/share/ca-certificates/myCertificate.crt"]
-COPY  ["./Certificate/myCertificate.crt", "/usr/local/share/ca-certificates/myCertificate.crt"]
 RUN update-ca-certificates
 RUN dotnet restore "./apicsharp/apicsharp.csproj"
 COPY . .
